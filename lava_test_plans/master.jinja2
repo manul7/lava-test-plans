@@ -24,6 +24,8 @@
 {% set AUTO_LOGIN_PASSWORD = AUTO_LOGIN_PASSWORD|default("") %}
 
 {% set enable_tests = enable_tests|default(true) %}
+{# Secrets definitions #}
+{% set SQUAD_AUTH_TOKEN = SQUAD_AUTH_TOKEN|default("") %}
 
 {% block global_settings %}
 timeouts:
@@ -45,6 +47,10 @@ context:
 {% endblock settings %}
 {% endblock global_settings %}
 
+{% block secrets %}
+secrets:
+  SQUAD_AUTH_TOKEN: "{{ SQUAD_AUTH_TOKEN }}"
+{% endblock secrets %}
 
 {% set LAVA_JOB_VISIBILITY = LAVA_JOB_VISIBILITY|default("public") %}
 device_type: {% block device_type %}{% endblock %}
